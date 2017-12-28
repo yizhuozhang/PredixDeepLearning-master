@@ -1,5 +1,4 @@
 # Python Flask application for TensorFlow demo
-# AUTHOR: Dattaraj J Rao - dattaraj.rao@ge.com
 
 # Import Flask for building web app
 from flask import Flask, request ,render_template,Markup,send_from_directory
