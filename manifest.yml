@@ -1,0 +1,6 @@
+---
+applications:
+- name: deeplearning-demo-zyz
+  memory: 512M
+  command: python run.py
+  buildpack: https://github.com/ihuston/python-conda-buildpack.git
