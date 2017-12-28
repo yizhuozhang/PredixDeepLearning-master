@@ -1,29 +1,23 @@
-# PredixDeepLearning-master
-Python demo for Predix Cloud
-# Python Flask application for TensorFlow demo
-# AUTHOR: Dattaraj J Rao - dattaraj.rao@ge.com
 
-# Import Flask for building web app
 from flask import Flask, request ,render_template,Markup,send_from_directory
 
-# Other standard imports in Python
 import os
 import ssl
 import six.moves.urllib as urllib
 import cv2
 import random
 import numpy as np
-# Import our method for running model
+
 from predict import run_model, load_image_into_numpy_array,numpy_array_to_PIL
 
-# Get the port for starting web server
+
 port = int(os.getenv('PORT', '5000'))
 
 
-# Create the Flask app
+
 app = Flask(__name__, static_url_path='')
 
-# Initialize SSL context to read URLs with HTTPS
+
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
@@ -31,7 +25,7 @@ ctx.verify_mode = ssl.CERT_NONE
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-#### DEFINE Flask Routes ####
+
 
 @app.route('/create/<summary>/<change>')
 def createcm(summary=None, change=None):
@@ -43,7 +37,7 @@ def createcm(summary=None, change=None):
 def index():
     return render_template("upload.html",env_vars=os.environ, req_headers=request.headers, req_params=request.args)
 
-# Handle the request when URL is passed
+
 @app.route('/upload', methods=['POST', 'GET'])
 def upload():
                                             
@@ -112,6 +106,5 @@ def send_image(filename=None,tag=None):
     return send_from_directory('images', filename)
       
         
-# Run the application and start server
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port)
